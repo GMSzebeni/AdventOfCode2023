@@ -12,6 +12,7 @@ public class Aoc01122023 {
     }
 
     public static int getNumbersFromLines(String line) {
+        line = replaceTextWithNumbers(line);
         int number = 0;
         Pattern patternFirst = Pattern.compile("\\d");
         Pattern patternLast = Pattern.compile("\\d(?!.*\\d)");
@@ -38,5 +39,15 @@ public class Aoc01122023 {
             e.printStackTrace();
         }
         return result;
+    }
+
+    public static String replaceTextWithNumbers(String line) {
+        String[] numbersFromText = new String[]{"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+        for (int i = 0; i < numbersFromText.length; i++) {
+            if (line.contains(numbersFromText[i])) {
+                line = line.replace(numbersFromText[i], numbersFromText[i] + i + numbersFromText[i]);
+            }
+        }
+        return line;
     }
 }
