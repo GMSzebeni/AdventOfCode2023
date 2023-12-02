@@ -14,10 +14,8 @@ public class Aoc01122023 {
     public static int getNumbersFromLines(String line) {
         line = replaceTextWithNumbers(line);
         int number = 0;
-        Pattern patternFirst = Pattern.compile("\\d");
-        Pattern patternLast = Pattern.compile("\\d(?!.*\\d)");
-        Matcher matcherFirst = patternFirst.matcher(line);
-        Matcher matcherLast = patternLast.matcher(line);
+        Matcher matcherFirst = Pattern.compile("\\d").matcher(line);
+        Matcher matcherLast = Pattern.compile("\\d(?!.*\\d)").matcher(line);
         if (matcherFirst.find() && matcherLast.find()) {
             number += Integer.parseInt(matcherFirst.group()) * 10;
             number += Integer.parseInt(matcherLast.group());
